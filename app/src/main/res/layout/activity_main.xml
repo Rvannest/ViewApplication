@@ -63,6 +63,14 @@
             android:layout_weight="1"
             android:text="DOWN" />
 
+        <Button
+            android:id="@+id/button_swap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SWAP" />
+
+
     </LinearLayout>
 
 </LinearLayout>

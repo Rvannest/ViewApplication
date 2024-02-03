@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_count, btn_reset, btn_up, btn_down;
+    Button btn_count, btn_reset, btn_up, btn_down, btn_swap;
     TextView textView_number;
     EditText editText;
     int counter = 0;
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editTextText);
 
         btn_reset.setVisibility(View.GONE);
+
+        btn_swap = findViewById(R.id.button_swap);
 
         btn_count.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,28 @@ public class MainActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
                 textView_number.setText(text);
             }
+        });
+
+        btn_swap.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              String currentValueInTextView = textView_number.getText().toString();
+              String currentValueInEditText = editText.getText().toString();
+
+              //swap values
+              textView_number.setText(currentValueInEditText);
+              editText.setText(currentValueInTextView);
+
+              if (currentValueInEditText.isEmpty()) {
+                  textView_number.setText("0");
+              }
+
+              try {
+                  counter = Integer.parseInt(textView_number.getText().toString());
+              } catch (NumberFormatException e) {
+                  counter = 0;
+              }
+          }
         });
     }
 }
