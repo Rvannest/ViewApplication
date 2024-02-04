@@ -79,18 +79,18 @@ public class MainActivity extends AppCompatActivity {
               String currentValueInTextView = textView_number.getText().toString();
               String currentValueInEditText = editText.getText().toString();
 
-              //swap values
-              textView_number.setText(currentValueInEditText);
-              editText.setText(currentValueInTextView);
-
-              if (currentValueInEditText.isEmpty()) {
-                  textView_number.setText("0");
-              }
-
               try {
-                  counter = Integer.parseInt(textView_number.getText().toString());
+                  int valueInEditText = Integer.parseInt(currentValueInEditText);
+
+                  //swap values
+                  textView_number.setText(currentValueInEditText);
+                  editText.setText(currentValueInTextView);
+
+                  counter = valueInEditText;
+
               } catch (NumberFormatException e) {
-                  counter = 0;
+                  Toast.makeText(MainActivity.this, "Invalid number in EditText", Toast.LENGTH_SHORT).show();
+                  editText.setText(currentValueInTextView);
               }
           }
         });
